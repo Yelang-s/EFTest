@@ -6,7 +6,7 @@
         
         public MyDbContext():base("MyConnectString")
         {
-
+            
         }
 
         public IDbSet<Models.ProductInfo>  ProductInfos { get; set; }
