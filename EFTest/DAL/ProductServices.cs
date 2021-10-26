@@ -12,8 +12,9 @@ namespace EFTest.DAL
         {
             using (MyDbContext m = new MyDbContext())
             {
-                //return m.ProductInfos.Where(t => t.PSN == productInfo.PSN).FirstOrDefault();
-                return m.ProductInfos.Find(productInfo.PSN);
+                m.Database.Log = WriteLog;
+                return m.ProductInfos.Where(t => t.PSN == productInfo.PSN).FirstOrDefault();
+                //return m.ProductInfos.Find(productInfo.PSN);
             }
         }
 
@@ -22,6 +23,7 @@ namespace EFTest.DAL
             int index = 0;
             using (MyDbContext m = new MyDbContext())
             {
+                m.Database.Log = WriteLog;
                 using (var t = m.Database.BeginTransaction())
                 {
                     // 方式1 会修改全部属性值
@@ -29,8 +31,31 @@ namespace EFTest.DAL
                     //e.State = System.Data.Entity.EntityState.Modified;
 
                     // 方式2 先查询，再修改
-                    var data = m.ProductInfos.Find(productInfo.PSN);
-                    
+                    var data = m.ProductInfos.Where(tt => tt.PSN == productInfo.PSN).FirstOrDefault();
+
+                    foreach (var old in data.GetType().GetProperties())
+                    {
+                        if (old.PropertyType == typeof(DateTime)) continue;
+                        foreach (var new1 in productInfo.GetType().GetProperties())
+                        {
+                            if (new1.PropertyType == typeof(DateTime)) continue;
+                            if (old.Name == new1.Name && 
+                                new1.GetValue(productInfo) != default && 
+                                old.GetValue(data) != new1.GetValue(productInfo))
+                            {
+                                if (new1.PropertyType == typeof(bool) && false != (bool)new1.GetValue(productInfo))
+                                {
+                                    old.SetValue(data, new1.GetValue(productInfo));
+                                }
+                                else if(new1.PropertyType != typeof(bool))
+                                {
+                                    old.SetValue(data, new1.GetValue(productInfo));
+                                }
+                            }
+                        }
+                        
+                    }
+
                     index = m.SaveChanges();
                     t.Commit();
                 }
@@ -43,7 +68,7 @@ namespace EFTest.DAL
             int index = 0;
             using (MyDbContext m = new MyDbContext())
             {
-                m.Database.Log = Console.Write;
+                m.Database.Log = WriteLog;
                 m.Configuration.AutoDetectChangesEnabled = false;
                 using (var t = m.Database.BeginTransaction())
                 {
@@ -57,6 +82,17 @@ namespace EFTest.DAL
                 m.Configuration.AutoDetectChangesEnabled = true;
             }
             return index;
+        }
+
+
+        private static void WriteLog(string str)
+        {
+            Console.Write(str);
+            using (System.IO.FileStream fs = new System.IO.FileStream(@".\sql.txt",System.IO.FileMode.Append,System.IO.FileAccess.Write))
+            {
+                byte[] vs = Encoding.UTF8.GetBytes(str);
+                fs.Write(vs, 0, vs.Length);
+            }
         }
     }
 }

@@ -108,6 +108,10 @@
     <Compile Include="Migrations\202110240419198_update.designer.cs">
       <DependentUpon>202110240419198_update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110260208294_pp.cs" />
+    <Compile Include="Migrations\202110260208294_pp.designer.cs">
+      <DependentUpon>202110260208294_pp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EnumTestContext.cs" />
     <Compile Include="Models\ProductInfo.cs" />
@@ -125,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110240419198_update.resx">
       <DependentUpon>202110240419198_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110260208294_pp.resx">
+      <DependentUpon>202110260208294_pp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
