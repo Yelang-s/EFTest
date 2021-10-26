@@ -72,6 +72,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
@@ -112,6 +113,10 @@
     <Compile Include="Migrations\202110260208294_pp.designer.cs">
       <DependentUpon>202110260208294_pp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110260738507_addDate.cs" />
+    <Compile Include="Migrations\202110260738507_addDate.designer.cs">
+      <DependentUpon>202110260738507_addDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EnumTestContext.cs" />
     <Compile Include="Models\ProductInfo.cs" />
@@ -132,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110260208294_pp.resx">
       <DependentUpon>202110260208294_pp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110260738507_addDate.resx">
+      <DependentUpon>202110260738507_addDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
