@@ -32,7 +32,6 @@ namespace EFTest
             //    PSN = "23456",
             //});
             //System.Console.WriteLine(s.ElapsedMilliseconds);
-            System.Console.WriteLine(  );
             System.Console.WriteLine("Done");
             System.Console.ReadLine();
         }
