@@ -14,7 +14,6 @@ namespace EFTest.DAL
             {
                 m.Database.Log = WriteLog;
                 return m.ProductInfos.Where(t => t.PSN == productInfo.PSN).FirstOrDefault();
-                //return m.ProductInfos.Find(productInfo.PSN);
             }
         }
 

@@ -27,8 +27,6 @@
 
         public bool T3Result { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime Date { get; set; }
         public DateTime StartTime { get; set; }
 
         public DateTime EndTime { get; set; }

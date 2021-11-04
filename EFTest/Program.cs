@@ -30,12 +30,9 @@ namespace EFTest
             //DAL.ProductServices.UpdateProductInfo(new Models.ProductInfo
             //{
             //    PSN = "23456",
-            //    T1Data = "124.77",
-
-            //    T2Data = "14556.7",
-            //    T3Data = "1995.9"
             //});
             //System.Console.WriteLine(s.ElapsedMilliseconds);
+  
             System.Console.WriteLine("Done");
             System.Console.ReadLine();
         }

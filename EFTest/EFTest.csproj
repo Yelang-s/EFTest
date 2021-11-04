@@ -117,6 +117,10 @@
     <Compile Include="Migrations\202110260738507_addDate.designer.cs">
       <DependentUpon>202110260738507_addDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110260805475_removeDate.cs" />
+    <Compile Include="Migrations\202110260805475_removeDate.designer.cs">
+      <DependentUpon>202110260805475_removeDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EnumTestContext.cs" />
     <Compile Include="Models\ProductInfo.cs" />
@@ -140,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110260738507_addDate.resx">
       <DependentUpon>202110260738507_addDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110260805475_removeDate.resx">
+      <DependentUpon>202110260805475_removeDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
